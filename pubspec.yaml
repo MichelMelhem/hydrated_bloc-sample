@@ -17,10 +17,9 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  bloc: ^0.15.0
-  camera: ^0.5.4+2
-  flutter_bloc: ^0.21.0
-  path_provider: ^1.4.0
+  bloc: ^2.0.0
+  hydrated_bloc: ^2.0.0
+  flutter_bloc: ^2.0.0
   uuid: ^2.0.2
 
   flutter:
