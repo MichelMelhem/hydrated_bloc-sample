@@ -40,17 +40,15 @@ class UserBloc extends HydratedBloc<UserEvent, UserState> {
   @override
   UserState fromJson(Map<String, dynamic> source) {
     try {
-      return state.copyWith(
-          error: "",
-          isFetching: false,
-          uuid: source["uuid"],
-          email: source["email"],
-          displayName: source["email"],
-          isEmailVerified: source["isEmailVerified"] as bool,
-          profilePictureUrl: source["profilePictureUrl"],
-          token: source["token"]);
-    } catch (e) {
-      print(e);
+      return UserState(
+        email: source['email'],
+        isEmailVerified: source['isEmailVerified'],
+        displayName: source['displayName'],
+        uuid: source['uuid'],
+        profilePictureUrl: source['profilePictureUrl'],
+        token: source['token'],
+      );
+    } catch (_) {
       return null;
     }
   }
@@ -66,17 +64,15 @@ class UserBloc extends HydratedBloc<UserEvent, UserState> {
         'profilePictureUrl': state.profilePictureUrl,
         'token': state.token
       };
-    } catch (e) {
-      print(e);
+    } catch (_) {
       return null;
     }
   }
 
   @override
-  close() {
+  Future<void> close() {
     userBlocSubscription.cancel();
-    super.close();
-    return null;
+    return super.close();
   }
 }
 
